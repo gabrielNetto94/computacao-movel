@@ -1,0 +1,100 @@
+<!--Exercício 1 -->
+<acervoLivros>
+    <livro>
+        <ISBN>978-3-16-148410-0</ISBN>
+        <titulo>Chapéuzinho Vermelho</titulo>
+        <preco>10.99</preco>
+        <editora>Happy Books</editora>
+        <autores>
+            <autor>Cristina Marques</autor>
+        </autores>
+        
+      <evento>
+            <nomeEvento>Feira do livro</nomeEvento>
+            <cidade>Santa Maria</cidade>
+            <estado>Rio Grande Do Sul</estado>
+            <dataInicio>20/05/2018</dataInicio>
+            <dataFim>25/05/2018</dataFim>
+        </evento>
+    </livro>
+
+        <livro>
+        <ISBN>838-2-14-248410-1</ISBN>
+        <titulo>O Poder do Hábito</titulo>
+        <preco>39.90</preco>
+        <editora>Objetiva</editora>
+        <autores>
+            <autor>Charles Duhigg</autor>
+        </autores>
+      <evento>
+            <nomeEvento>Feira do livro</nomeEvento>
+            <cidade>Santa Maria</cidade>
+            <estado>Rio Grande Do Sul</estado>
+            <dataInicio>20/05/1998</dataInicio>
+            <dataFim>25/05/1998</dataFim>
+        </evento>
+    </livro>
+
+        <livro>
+        <ISBN>838-2-14-248410-1</ISBN>
+        <titulo>A Menina que roubava livros</titulo>
+        <preco>26.99</preco>
+        <editora>Intrínseca</editora>
+        <autores>
+            <autor>Markus Zusak</autor>
+        </autores>
+    </livro>
+        
+        <livro>
+        <ISBN>838-2-14-248410-1</ISBN>
+        <titulo>Os inovadores</titulo>
+        <preco>38.90</preco>
+        <editora>Companhia das Letras</editora>
+        <autores>
+            <autor>Walter Isaacson</autor>
+        </autores>
+        <evento>
+            <nomeEvento>Feira do livro</nomeEvento>
+            <cidade>Santa Maria</cidade>
+            <estado>Rio Grande Do Sul</estado>
+            <dataInicio>20/05/1998</dataInicio>
+            <dataFim>25/05/1998</dataFim>
+        </evento>
+
+    </livro>
+        <livro>
+        <ISBN>978-8599296578</ISBN>
+        <titulo>O Guia do mochileiro das galáxias</titulo>
+        <preco>38.90</preco>
+        <editora>Editora Arqueiro</editora>
+        <autores>
+            <autor>Douglas Adams</autor>
+        </autores>
+    </livro>
+
+</acervoLivros>
+
+<!--Exercício 2 -->
+<agendaTelefonica>
+    <nome>Gabriel Netto</nome>
+    
+    <endereco>
+        <rua>Mauricio Cardoso</rua>
+        <bairro>Nossa Senhora de Fátima</bairro>
+        <numero>205</numero>
+        <CEP>97015400<CEP>
+        <cidade>Santa Maria</cidade>
+        <estado>Rio Grande do Sul<estado>
+        <pais>Brasil</pais>
+    </endereco>
+    
+    <telefones>
+        <celular></celular>
+        <residencial></residencial>
+        <trabalho></trabalho>
+        <outros></outros>
+    </telefones>
+
+    <categoria></categoria>
+
+</agendaTelefonica>
