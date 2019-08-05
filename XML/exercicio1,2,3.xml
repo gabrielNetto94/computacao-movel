@@ -1,0 +1,141 @@
+<!--Exercício 1 -->
+<acervoLivros>
+    <livro>
+        <ISBN>978-3-16-148410-0</ISBN>
+        <titulo>Chapéuzinho Vermelho</titulo>
+        <preco>10.99</preco>
+        <editora>Happy Books</editora>
+        <autores>
+            <autor>Cristina Marques</autor>
+        </autores>
+        
+      <evento>
+            <nomeEvento>Feira do livro</nomeEvento>
+            <cidade>Santa Maria</cidade>
+            <estado>Rio Grande Do Sul</estado>
+            <dataInicio>20/05/2018</dataInicio>
+            <dataFim>25/05/2018</dataFim>
+        </evento>
+    </livro>
+
+        <livro>
+        <ISBN>838-2-14-248410-1</ISBN>
+        <titulo>O Poder do Hábito</titulo>
+        <preco>39.90</preco>
+        <editora>Objetiva</editora>
+        <autores>
+            <autor>Charles Duhigg</autor>
+        </autores>
+      <evento>
+            <nomeEvento>Feira do livro</nomeEvento>
+            <cidade>Santa Maria</cidade>
+            <estado>Rio Grande Do Sul</estado>
+            <dataInicio>20/05/1998</dataInicio>
+            <dataFim>25/05/1998</dataFim>
+        </evento>
+    </livro>
+
+        <livro>
+        <ISBN>838-2-14-248410-1</ISBN>
+        <titulo>A Menina que roubava livros</titulo>
+        <preco>26.99</preco>
+        <editora>Intrínseca</editora>
+        <autores>
+            <autor>Markus Zusak</autor>
+        </autores>
+    </livro>
+        
+        <livro>
+        <ISBN>838-2-14-248410-1</ISBN>
+        <titulo>Os inovadores</titulo>
+        <preco>38.90</preco>
+        <editora>Companhia das Letras</editora>
+        <autores>
+            <autor>Walter Isaacson</autor>
+        </autores>
+        <evento>
+            <nomeEvento>Feira do livro</nomeEvento>
+            <cidade>Santa Maria</cidade>
+            <estado>Rio Grande Do Sul</estado>
+            <dataInicio>20/05/1998</dataInicio>
+            <dataFim>25/05/1998</dataFim>
+        </evento>
+
+    </livro>
+        <livro>
+        <ISBN>978-8599296578</ISBN>
+        <titulo>O Guia do mochileiro das galáxias</titulo>
+        <preco>38.90</preco>
+        <editora>Editora Arqueiro</editora>
+        <autores>
+            <autor>Douglas Adams</autor>
+        </autores>
+    </livro>
+
+</acervoLivros>
+
+<!--Exercício 2 -->
+<agendaTelefonica>
+    <nome>Gabriel Netto</nome>
+    
+    <endereco>
+        <rua>Mauricio Cardoso</rua>
+        <bairro>Nossa Senhora de Fátima</bairro>
+        <numero>205</numero>
+        <CEP>97015400<CEP>
+        <cidade>Santa Maria</cidade>
+        <estado>Rio Grande do Sul<estado>
+        <pais>Brasil</pais>
+    </endereco>
+    
+    <telefones>
+        <celular></celular>
+        <residencial></residencial>
+        <trabalho></trabalho>
+        <outros></outros>
+    </telefones>
+
+    <categoria></categoria>
+
+</agendaTelefonica>
+
+<!-- Exercício 3
+O layout define a estrutura visual para uma interface do usuário, como a IU de uma atividade ou de um widget de aplicativo.
+É possível declarar um layout de dois modos:
+Declarar elementos da IU em XML: 
+    O Android fornece um vocabulário XML direto que corresponde às classes e subclasses de View, como as de widgets e layouts.
+Instanciar elementos do layout em tempo de execução: 
+    O aplicativo pode criar objetos View e ViewGroup (e processar suas propriedades) programaticamente.
+
+Fonte: https://developer.android.com/guide/topics/ui/declaring-layout?hl=pt-br
+-->
+ <Button
+    android:id="@+id/btTestarComponente"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Testar Componente"
+    android:onClick="btTestarComponenteOnClick" />
+
+<RadioGroup
+    android:id="@+id/rgSexo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >         
+    <RadioButton
+        android:id="@+id/rbMasculino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masculino" 
+        android:checked="true" />
+
+    <RadioButton
+        android:id="@+id/rbFeminino"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feminino" />
+</RadioGroup>
+
+<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado Civil:" />
