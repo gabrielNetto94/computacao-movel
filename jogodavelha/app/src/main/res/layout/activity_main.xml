@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <!--jogo da velha-->
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jogo da Velha"
+        android:textSize="27sp"/>
+    <!--Modo de jogo-->
+    <TextView
+        android:gravity="start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modo de jogo:"
+        android:textSize="20sp"/>
+
+    <!--radio group-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <RadioGroup
+            android:id="@+id/radioGroupd1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jogador vs Jogador"
+                android:onClick="onRadioButtonClicked" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jogar vs Computador"
+                android:onClick="onRadioButtonClicked" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <!--iniciar-->
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Iniciar"
+        android:onClick="startGame"/>
+
+    <!-- TABELA JOGO DA VELHA-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <!-- LINHA 1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black">
+
+            <Button
+                android:onClick="click"
+                android:textSize="16dp"
+                android:id="@+id/button1"
+                android:layout_width="131dp"
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:text="X" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="131dp"
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:text="" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="131dp"
+                android:layout_height="76dp"
+                android:background="@android:color/white"
+                android:text="" />
+        </LinearLayout>
+        <!-- LINHA 2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black">
+
+            <Button
+
+                android:id="@+id/button4"
+                android:layout_width="130dp"
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:text="" />
+
+
+            <Button
+
+                android:id="@+id/button5"
+                android:layout_width="131dp"
+
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:text="" />
+
+            <Button
+
+                android:id="@+id/button6"
+                android:layout_width="132dp"
+
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/white"
+                android:text="" />
+        </LinearLayout>
+        <!-- LINHA 3-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="129dp"
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/white"
+                android:text="" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="131dp"
+                android:layout_height="76dp"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/white"
+                android:text="" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="131dp"
+                android:layout_height="76dp"
+                android:background="@android:color/white"
+                android:text="" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/turnPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Vez do jogador"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/winStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="start"
+            android:text="Status Vitória"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+</LinearLayout>
