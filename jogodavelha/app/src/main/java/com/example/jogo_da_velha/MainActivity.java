@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button button1,button2,button3,button4,button5,button6,button7,button8,button9;
 
     //turn player
-    TextView turnPlayer,winStatus;
+    TextView viewTurnPlayer,winStatus;
 
     RadioButton playerVsPlayer, playerVsPc;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         playerVsPc = findViewById(R.id.playerVsPc);
 
         //turn player
-        turnPlayer = findViewById(R.id.turnPlayer);
+        viewTurnPlayer = findViewById(R.id.turnPlayer);
         winStatus = findViewById(R.id.winStatus);
 
         //buttons jogo da velha
@@ -48,82 +48,126 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    int choiceGameMode = 0;
+    int choiceGameMode;
+    int controlPlayers = 0 ;
 
     public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.playerVsPlayer:
                 if (checked)
-                    //turnPlayer.setText("Player vs Player");
                     choiceGameMode = 1;
                 break;
             case R.id.playerVsPc:
                 if (checked)
-                    //turnPlayer.setText("Player vs PC");
                     choiceGameMode = 2;
                 break;
         }
     }
 
-    public void startGame(View view){
-        //test if game mode is selected
-        if(!playerVsPc.isChecked() && !playerVsPlayer.isChecked()){
-
-        }
-
-        playerVsPlayer.setEnabled(false);
-        playerVsPc.setEnabled(false);
-        if(choiceGameMode == 1){
-
-        }else if (choiceGameMode == 2){
-
-        }
-    }
-
-
+    //set X or O
     public void textButton(Button btn){
-        if(btn.getText().equals("")){
-            btn.setText("");
+        if(controlPlayers % 2 == 1){
+            btn.setText("O");
+            testWinner("O");
+        }
+        if(controlPlayers % 2 == 0){
+            btn.setText("X");
+            testWinner("X");
         }
     }
-    //BEGIN TEST
-    public void clickButton(View view) {
 
+    public void clickButton(View view) {
         switch(view.getId()) {
             case R.id.button1:
                 textButton(button1);
-                Toast.makeText(getApplicationContext(), "Button 1", Toast.LENGTH_SHORT).show();
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button2:
-                Toast.makeText(getApplicationContext(), "Button 2", Toast.LENGTH_SHORT).show();
+                textButton(button2);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button3:
-                Toast.makeText(getApplicationContext(), "Button 3", Toast.LENGTH_SHORT).show();
+                textButton(button3);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button4:
-                Toast.makeText(getApplicationContext(), "Button 4", Toast.LENGTH_SHORT).show();
+                textButton(button4);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button5:
-                Toast.makeText(getApplicationContext(), "Button 5", Toast.LENGTH_SHORT).show();
+                textButton(button5);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button6:
-                Toast.makeText(getApplicationContext(), "Button 6", Toast.LENGTH_SHORT).show();
+                textButton(button6);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button7:
-                Toast.makeText(getApplicationContext(), "Button 7", Toast.LENGTH_SHORT).show();
+                textButton(button7);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button8:
-                Toast.makeText(getApplicationContext(), "Button 8", Toast.LENGTH_SHORT).show();
+                textButton(button8);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
             case R.id.button9:
-                Toast.makeText(getApplicationContext(), "Button 9", Toast.LENGTH_SHORT).show();
+                textButton(button9);
+                controlPlayers++;
+                button1.setClickable(false);
                 break;
         }
     }
-    //END TEST
+
+    public void startGame(View view){
+        //Test if game mode not selected
+        if(!playerVsPc.isChecked() && !playerVsPlayer.isChecked()){
+            Toast.makeText(getApplicationContext(), "Selecione um modo de jogo.", Toast.LENGTH_SHORT).show();
+        }else{
+            playerVsPlayer.setEnabled(false);
+            playerVsPc.setEnabled(false);
+            if(choiceGameMode == 1){
+
+            }else if (choiceGameMode == 2){
+
+            }
+        }
+    }
+
+    public void testWinner (String player){
+
+        if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button4.getText() == player && button5.getText() == player && button6.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button7.getText() == player && button8.getText() == player && button9.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button1.getText() == player && button5.getText() == player && button9.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button3.getText() == player && button5.getText() == player && button7.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button1.getText() == player && button4.getText() == player && button7.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button2.getText() == player && button5.getText() == player && button8.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+        if(button3.getText() == player && button6.getText() == player && button9.getText() == player){
+            Toast.makeText(getApplicationContext(), "Jogador "+player+" VENCEU!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
 
