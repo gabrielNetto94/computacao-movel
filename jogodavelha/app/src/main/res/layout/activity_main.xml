@@ -16,6 +16,7 @@
     <!--Modo de jogo-->
     <TextView
         android:gravity="start"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Modo de jogo:"
@@ -46,7 +47,7 @@
                 android:id="@+id/playerVsPc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jogar vs Computador"
+                android:text="Jogador vs Computador"
                 android:onClick="onRadioButtonClicked" />
 
         </RadioGroup>
@@ -76,9 +77,9 @@
 
             <Button
                 android:onClick="clickButton"
-                android:textSize="16dp"
+                android:textSize="30dp"
                 android:id="@+id/button1"
-                android:layout_width="131dp"
+                android:layout_width="122dp"
                 android:layout_height="76dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
@@ -87,6 +88,7 @@
 
             <Button
                 android:onClick="clickButton"
+                android:textSize="30dp"
                 android:id="@+id/button2"
                 android:layout_width="131dp"
                 android:layout_height="76dp"
@@ -97,6 +99,7 @@
 
             <Button
                 android:onClick="clickButton"
+                android:textSize="30dp"
                 android:id="@+id/button3"
                 android:layout_width="131dp"
                 android:layout_height="76dp"
@@ -110,18 +113,20 @@
             android:background="@android:color/black">
 
             <Button
-                android:onClick="clickButton"
                 android:id="@+id/button4"
-                android:layout_width="130dp"
+                android:layout_width="123dp"
                 android:layout_height="76dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@android:color/white"
-                android:text="" />
+                android:onClick="clickButton"
+                android:text=""
+                android:textSize="30dp" />
 
 
             <Button
                 android:onClick="clickButton"
+                android:textSize="30dp"
                 android:id="@+id/button5"
                 android:layout_width="131dp"
                 android:layout_height="76dp"
@@ -132,6 +137,7 @@
 
             <Button
                 android:onClick="clickButton"
+                android:textSize="30dp"
                 android:id="@+id/button6"
                 android:layout_width="132dp"
                 android:layout_height="76dp"
@@ -147,16 +153,18 @@
             android:background="@android:color/black">
 
             <Button
-                android:onClick="clickButton"
                 android:id="@+id/button7"
-                android:layout_width="129dp"
+                android:layout_width="123dp"
                 android:layout_height="76dp"
                 android:layout_marginRight="10dp"
                 android:background="@android:color/white"
-                android:text="" />
+                android:onClick="clickButton"
+                android:text=""
+                android:textSize="30dp" />
 
             <Button
                 android:onClick="clickButton"
+                android:textSize="30dp"
                 android:id="@+id/button8"
                 android:layout_width="131dp"
                 android:layout_height="76dp"
@@ -166,6 +174,7 @@
 
             <Button
                 android:onClick="clickButton"
+                android:textSize="30dp"
                 android:id="@+id/button9"
                 android:layout_width="131dp"
                 android:layout_height="76dp"
@@ -183,6 +192,7 @@
 
         <TextView
             android:id="@+id/turnPlayer"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
@@ -193,7 +203,7 @@
             android:id="@+id/winStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_marginLeft="80dp"
             android:gravity="start"
             android:text="Status Vitória"
             android:textSize="20sp" />
