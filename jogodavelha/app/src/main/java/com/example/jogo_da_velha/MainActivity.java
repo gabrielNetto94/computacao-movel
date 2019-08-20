@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         button8 = (Button)findViewById(R.id.button8);
         button9 = (Button)findViewById(R.id.button9);
 
-
     }
 
     int choiceGameMode;
@@ -71,15 +70,12 @@ public class MainActivity extends AppCompatActivity {
             btn.setText("X");
             testWinner("X",1);
             viewTurnPlayer.setText("Vez do jogador 2");
-
         }
         if(controlPlayers % 2 == 1){
             btn.setText("O");
             testWinner("O",2);
             viewTurnPlayer.setText("Vez do jogador 1");
-
         }
-
     }
 
     public void clickButton(View view) {
@@ -132,35 +128,58 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void changeStateButtons(boolean state){
+        button1.setClickable(state);
+        button2.setClickable(state);
+        button3.setClickable(state);
+        button4.setClickable(state);
+        button5.setClickable(state);
+        button6.setClickable(state);
+        button7.setClickable(state);
+        button8.setClickable(state);
+        button9.setClickable(state);
+    }
+
     public void testWinner (String player, int numberPLayer){
 
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button4.getText() == player && button5.getText() == player && button6.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button7.getText() == player && button8.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button1.getText() == player && button5.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button3.getText() == player && button5.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button1.getText() == player && button4.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button2.getText() == player && button5.getText() == player && button8.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
         if(button3.getText() == player && button6.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
         }
     }
 
     public void restart(){
+
+        changeStateButtons(true);
+
         button1.setText("");
         button2.setText("");
         button3.setText("");
@@ -170,19 +189,13 @@ public class MainActivity extends AppCompatActivity {
         button7.setText("");
         button8.setText("");
         button9.setText("");
-        button1.setClickable(true);
-        button2.setClickable(true);
-        button3.setClickable(true);
-        button4.setClickable(true);
-        button5.setClickable(true);
-        button6.setClickable(true);
-        button7.setClickable(true);
-        button8.setClickable(true);
-        button9.setClickable(true);
+
         playerVsPlayer.setChecked(false);
         playerVsPc.setChecked(false);
+
         playerVsPlayer.setEnabled(false);
         playerVsPc.setEnabled(false);
+
         controlPlayers = 0;
     }
     public void startGame(View view){
@@ -201,6 +214,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
 }
-
