@@ -8,10 +8,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     //buttons jogo da velha
     Button button1,button2,button3,button4,button5,button6,button7,button8,button9;
+    Button startGame,restart;
 
     //turn player
     TextView viewTurnPlayer,winStatus;
@@ -32,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         //turn player
         viewTurnPlayer = findViewById(R.id.turnPlayer);
-        winStatus = findViewById(R.id.winStatus);
+        //winStatus = findViewById(R.id.winStatus);
+
+        //button start game
+        startGame = findViewById(R.id.buttonStart);
+        restart = findViewById(R.id.buttonRestart);
 
         //buttons jogo da velha
         button1 = (Button)findViewById(R.id.button1);
@@ -45,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         button8 = (Button)findViewById(R.id.button8);
         button9 = (Button)findViewById(R.id.button9);
 
+        //start game with buttons not clickable
+        changeStateButtons(false);
+        restart.setClickable(false);
     }
 
     int choiceGameMode;
@@ -71,11 +81,26 @@ public class MainActivity extends AppCompatActivity {
             testWinner("X",1);
             viewTurnPlayer.setText("Vez do jogador 2");
         }
-        if(controlPlayers % 2 == 1){
+        if(controlPlayers % 2 == 1 && choiceGameMode == 1) {
             btn.setText("O");
-            testWinner("O",2);
+            testWinner("O", 2);
             viewTurnPlayer.setText("Vez do jogador 1");
         }
+        if(controlPlayers % 2 == 1 && choiceGameMode == 2){
+            playComputer();
+            testWinner("O", 2);
+            viewTurnPlayer.setText("Vez do jogador 1");
+        }
+
+    }
+
+    public void playComputer(){
+
+
+        int i =0;
+        
+        int resId = getResources().getIdentifier("textView" + i, "id", getPackageName());
+        TextView textView = (TextView) findViewById(resId);
     }
 
     public void clickButton(View view) {
@@ -145,40 +170,51 @@ public class MainActivity extends AppCompatActivity {
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button4.getText() == player && button5.getText() == player && button6.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button7.getText() == player && button8.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button1.getText() == player && button5.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button3.getText() == player && button5.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button1.getText() == player && button4.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button2.getText() == player && button5.getText() == player && button8.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button3.getText() == player && button6.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
+            restart.setClickable(true);
         }
+
     }
 
-    public void restart(){
-
-        changeStateButtons(true);
+    public void restart(View v){
+        //set all buttons clickable
+        changeStateButtons(false);
+        startGame.setClickable(true);
+        restart.setClickable(false);
 
         button1.setText("");
         button2.setText("");
@@ -190,22 +226,29 @@ public class MainActivity extends AppCompatActivity {
         button8.setText("");
         button9.setText("");
 
-        playerVsPlayer.setChecked(false);
+        playerVsPlayer.setChecked(true);
         playerVsPc.setChecked(false);
 
-        playerVsPlayer.setEnabled(false);
-        playerVsPc.setEnabled(false);
+        playerVsPlayer.setEnabled(true);
+        playerVsPc.setEnabled(true);
+
+        viewTurnPlayer.setText("Vez do jogador 1");
 
         controlPlayers = 0;
+
+        choiceGameMode = 1;
     }
+
     public void startGame(View view){
         //Test if game mode not selected
         if(!playerVsPc.isChecked() && !playerVsPlayer.isChecked()){
             Toast.makeText(getApplicationContext(), "Selecione um modo de jogo.", Toast.LENGTH_SHORT).show();
         }else{
+            startGame.setClickable(false);
             playerVsPlayer.setEnabled(false);
             playerVsPc.setEnabled(false);
             viewTurnPlayer.setText("Vez do jogador 1");
+            changeStateButtons(true);
             if(choiceGameMode == 1){
 
             }else if (choiceGameMode == 2){

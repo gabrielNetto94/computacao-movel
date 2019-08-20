@@ -63,12 +63,13 @@
         android:text="Iniciar"
         android:onClick="startGame"/>
     <Button
-        android:id="@+id/restart"
+        android:id="@+id/buttonRestart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="REINICIAR"
-        android:onClick="restart"/>
+        android:onClick="restart"
+        />
 
 
     <!-- TABELA JOGO DA VELHA-->
@@ -133,15 +134,15 @@
 
 
             <Button
-                android:onClick="clickButton"
-                android:textSize="30dp"
                 android:id="@+id/button5"
                 android:layout_width="131dp"
                 android:layout_height="76dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@android:color/white"
-                android:text="" />
+                android:onClick="clickButton"
+                android:text=""
+                android:textSize="30dp" />
 
             <Button
                 android:onClick="clickButton"
@@ -207,6 +208,7 @@
             android:text="Vez do jogador"
             android:textSize="20sp" />
 
+        <!--
         <TextView
             android:id="@+id/winStatus"
             android:layout_width="wrap_content"
@@ -215,6 +217,8 @@
             android:gravity="start"
             android:text="Status Vitória"
             android:textSize="20sp" />
+        -->
+
     </LinearLayout>
 
 
