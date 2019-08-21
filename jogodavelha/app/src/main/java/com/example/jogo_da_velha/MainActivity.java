@@ -96,11 +96,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void playComputer(){
 
+        Random r = new Random();
 
-        int i =0;
-        
-        int resId = getResources().getIdentifier("textView" + i, "id", getPackageName());
-        TextView textView = (TextView) findViewById(resId);
+        Button getButton;
+        if(controlPlayers >= 9){
+            Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
+        }else{
+            do{
+
+                int numberButton = r.nextInt(9);
+                int resId = getResources().getIdentifier("button" + numberButton, "id", getPackageName());
+                getButton = (Button) findViewById(resId);
+
+            }while(getButton.getText().equals("X") || getButton.getText().equals("O"));
+
+            getButton.setText("O");
+            controlPlayers++;
+            getButton.setClickable(false);
+        }
+
+
     }
 
     public void clickButton(View view) {
@@ -109,46 +124,73 @@ public class MainActivity extends AppCompatActivity {
                 textButton(button1);
                 controlPlayers++;
                 button1.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button2:
                 textButton(button2);
                 controlPlayers++;
                 button2.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button3:
                 textButton(button3);
                 controlPlayers++;
                 button3.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button4:
                 textButton(button4);
                 controlPlayers++;
                 button4.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button5:
                 textButton(button5);
                 controlPlayers++;
                 button5.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button6:
                 textButton(button6);
                 controlPlayers++;
                 button6.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button7:
                 textButton(button7);
                 controlPlayers++;
                 button7.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button8:
                 textButton(button8);
                 controlPlayers++;
                 button8.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
             case R.id.button9:
                 textButton(button9);
                 controlPlayers++;
                 button9.setClickable(false);
+                if(choiceGameMode == 2){
+                    playComputer();
+                }
                 break;
         }
     }
@@ -167,6 +209,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void testWinner (String player, int numberPLayer){
 
+
+        if(controlPlayers >= 9){
+            Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
+        }
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
@@ -247,12 +293,12 @@ public class MainActivity extends AppCompatActivity {
             startGame.setClickable(false);
             playerVsPlayer.setEnabled(false);
             playerVsPc.setEnabled(false);
-            viewTurnPlayer.setText("Vez do jogador 1");
+
             changeStateButtons(true);
             if(choiceGameMode == 1){
-
+                viewTurnPlayer.setText("Vez do jogador 1");
             }else if (choiceGameMode == 2){
-
+                viewTurnPlayer.setText("");
             }
         }
     }
