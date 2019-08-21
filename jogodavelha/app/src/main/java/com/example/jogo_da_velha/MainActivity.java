@@ -86,37 +86,41 @@ public class MainActivity extends AppCompatActivity {
             testWinner("O", 2);
             viewTurnPlayer.setText("Vez do jogador 1");
         }
-        if(controlPlayers % 2 == 1 && choiceGameMode == 2){
-            playComputer();
-            testWinner("O", 2);
-            viewTurnPlayer.setText("Vez do jogador 1");
-        }
-
     }
 
     public void playComputer(){
 
+        boolean flag = false;
         Random r = new Random();
-
         Button getButton;
         if(controlPlayers >= 9){
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
-        }else{
-            do{
+            changeStateButtons(false);
+            restart.setClickable(true);
+        }else {
 
-                int numberButton = r.nextInt(9);
-                int resId = getResources().getIdentifier("button" + numberButton, "id", getPackageName());
-                getButton = (Button) findViewById(resId);
+        while (!flag){
 
-            }while(getButton.getText().equals("X") || getButton.getText().equals("O"));
+            int numberButton = r.nextInt(9)+1;
+            System.out.println(numberButton);
+            int resId = getResources().getIdentifier("button" + numberButton, "id", getPackageName());
+            getButton = (Button) findViewById(resId);
 
-            getButton.setText("O");
-            controlPlayers++;
-            getButton.setClickable(false);
+                if(getButton.getText().equals("X") || getButton.getText().equals("O")){
+                    flag = false;
+                }else{
+                    flag = true;
+                    getButton.setText("O");
+                    controlPlayers++;
+                    getButton.setClickable(false);
+                    testWinner("O", 2);
+                }
+
+            }
         }
 
-
     }
+
 
     public void clickButton(View view) {
         switch(view.getId()) {
@@ -212,46 +216,56 @@ public class MainActivity extends AppCompatActivity {
 
         if(controlPlayers >= 9){
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
+            changeStateButtons(false);
+            restart.setClickable(true);
         }
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button4.getText() == player && button5.getText() == player && button6.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button7.getText() == player && button8.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button1.getText() == player && button5.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button3.getText() == player && button5.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button1.getText() == player && button4.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button2.getText() == player && button5.getText() == player && button8.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button3.getText() == player && button6.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
 
     }
@@ -260,7 +274,10 @@ public class MainActivity extends AppCompatActivity {
         //set all buttons clickable
         changeStateButtons(false);
         startGame.setClickable(true);
+        startGame.setVisibility(View.VISIBLE);
+
         restart.setClickable(false);
+        restart.setVisibility(View.INVISIBLE);
 
         button1.setText("");
         button2.setText("");
@@ -291,14 +308,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Selecione um modo de jogo.", Toast.LENGTH_SHORT).show();
         }else{
             startGame.setClickable(false);
+            startGame.setVisibility(View.INVISIBLE);
             playerVsPlayer.setEnabled(false);
             playerVsPc.setEnabled(false);
 
             changeStateButtons(true);
             if(choiceGameMode == 1){
                 viewTurnPlayer.setText("Vez do jogador 1");
+                viewTurnPlayer.setVisibility(View.VISIBLE);
             }else if (choiceGameMode == 2){
                 viewTurnPlayer.setText("");
+                viewTurnPlayer.setVisibility(View.INVISIBLE);
             }
         }
     }

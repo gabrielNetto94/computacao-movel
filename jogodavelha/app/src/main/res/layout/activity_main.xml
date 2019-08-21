@@ -67,9 +67,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="REINICIAR"
         android:onClick="restart"
-        />
+        android:text="REINICIAR"
+        android:visibility="invisible" />
+
 
 
     <!-- TABELA JOGO DA VELHA-->
@@ -220,6 +221,8 @@
         -->
 
     </LinearLayout>
+
+
 
 
 </LinearLayout>
