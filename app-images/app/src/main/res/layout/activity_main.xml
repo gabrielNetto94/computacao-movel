@@ -1,18 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/previousButton"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="ANTERIOR"
+            android:onClick="previousImage"/>
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Próximo"
+            android:onClick="nextImage" />
+
+    </LinearLayout>
+
+    <!--BEGIN TEST-->
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="226dp"
+            android:src="@drawable/animal"
+            android:padding="8dp"
+            android:layout_marginBottom="10sp"
+            />
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="match_parent"
+            android:layout_height="226dp"
+            android:src="@drawable/gato"
+            android:padding="8dp"
+            android:layout_marginBottom="10sp"
+            />
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="match_parent"
+            android:layout_height="226dp"
+            android:src="@drawable/cachorro"
+            android:padding="8dp"
+            android:layout_marginBottom="10sp"
+            />
+
+
+    </ViewFlipper>
+    <!--END TEST-->
+
+    <!--<ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        android:src="@drawable/animal"
+        android:padding="8dp"
+        android:layout_marginBottom="10sp"
+        /> -->
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Center"
+            android:onClick="center"
+            />
+
+        <Button
+            android:id="@+id/buttonFitXY"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fitXY"
+            android:onClick="fitXY"
+            />
+
+        <Button
+            android:id="@+id/buttonFitStart"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fitStart"
+            android:onClick="fitStart"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonCenterCrop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="centerCrop"
+            android:onClick="centerCrop"
+            />
+
+        <Button
+            android:id="@+id/buttonCenterInside"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="centerInside"
+            android:onClick="centerInside"
+            />
+
+        <Button
+            android:id="@+id/buttonFitCenter"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fitCenter"
+            android:onClick="fitCenter"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonFitEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fitend"
+            android:onClick="fitEnd"
+            />
+
+        <Button
+            android:id="@+id/buttonMatrix"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matrix"
+            android:onClick="Matrix"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonAlpha0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alpha 0.0"
+            android:onClick="setImageAlpha0"
+
+            />
+
+        <Button
+            android:id="@+id/buttonAlpha05"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alpha 0.5"
+            android:onClick="setImageAlpha150"
+            />
+
+        <Button
+            android:id="@+id/buttonAlpha1"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alpha 1.0"
+            android:onClick="setImageAlpha255"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
