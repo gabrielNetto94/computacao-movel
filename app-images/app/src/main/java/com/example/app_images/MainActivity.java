@@ -1,7 +1,9 @@
 package com.example.app_images;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +12,6 @@ import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity {
 
-
-        ImageView imageView;
         ViewFlipper viewFlipper;
         Button buttonAlpha0,buttonAlpha05, buttonAlpha1, previousButton, nextButton, buttonMatrix, buttonFitEnd, buttonFitCenter, buttonCenterInside, buttonCenterCrop, buttonFitStart, buttonFitXY, buttonCenter;
 
@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main);
-                //imageView=findViewById(R.id.imageView);
-
                 buttonCenter=findViewById(R.id.buttonCenter);
                 buttonCenterCrop=findViewById(R.id.buttonCenterCrop);
                 buttonCenterInside=findViewById(R.id.buttonCenterInside);
@@ -38,56 +36,72 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        public void nextImage (View view){
+        public void nextImage (View view) {
                 viewFlipper.showNext();
         }
 
         public void previousImage(View view){
+
                 viewFlipper.showPrevious();
         }
 
         public void fitStart(View view) {
-                imageView.setScaleType(ImageView.ScaleType.FIT_START);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.FIT_START);
         }
 
         public void fitXY(View view) {
-                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.FIT_XY);
         }
 
         public void center(View view) {
-                imageView.setScaleType(ImageView.ScaleType.CENTER);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.CENTER);
         }
 
         public void centerCrop(View view) {
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
 
         public void centerInside(View view) {
-                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         }
 
         public void fitCenter(View view) {
-                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
 
         public void fitEnd(View view) {
-                imageView.setScaleType(ImageView.ScaleType.FIT_END);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.FIT_END);
         }
 
         public void Matrix(View view) {
-                imageView.setScaleType(ImageView.ScaleType.MATRIX);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setScaleType(ImageView.ScaleType.MATRIX);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         public void setImageAlpha0(View view) {
-                //imageView.setImageAlpha(0);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setImageAlpha(0);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         public void setImageAlpha150(View view) {
-                //imageView.setImageAlpha(150);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setImageAlpha(150);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         public void setImageAlpha255(View view) {
-                //imageView.setImageAlpha(255);
+                ImageView currentImage = (ImageView) viewFlipper.getCurrentView();
+                currentImage.setImageAlpha(255);
+
         }
 
 }
