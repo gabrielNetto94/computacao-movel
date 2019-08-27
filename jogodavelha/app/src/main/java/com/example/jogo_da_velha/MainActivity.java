@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     int choiceGameMode;
     int controlPlayers = 0 ;
 
+    //choice game mode
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
@@ -212,7 +213,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testWinner (String player, int numberPLayer){
-
 
         if(controlPlayers >= 9){
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
