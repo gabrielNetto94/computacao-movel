@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cálculo da mensalidade"
+        android:textSize="27sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aluno regular?"
+        android:textSize="20sp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/radioRegularSim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sim"
+            android:checked="true"
+            android:onClick="clickSimRegular"/>
+
+        <RadioButton
+            android:id="@+id/radioRegularNao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Não"
+            android:onClick="clickNaoRegular"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tem bolsa?"
+        android:textSize="20sp"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/radioBolsaSim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sim"
+            android:onClick="clickSimBolsa"/>
+
+        <!--
+        visibility: define se o componente irá
+        aparecer ou não, e se não aparecer, se vai
+        ocupar o espaço dele ou não.
+        -->
+        <EditText
+            android:visibility="gone"
+            android:textSize="20sp"
+            android:id="@+id/editValorBolsa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Digite o % de desconto"/>
+
+        <RadioButton
+            android:id="@+id/radioBolsaNao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Não"
+            android:checked="true"
+            android:onClick="clickNaoBolsa"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disciplinas:"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/checkBD3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Banco de dados III (51h)"
+        android:onClick="clickCalcular"/>
+
+    <CheckBox
+        android:id="@+id/checkCM"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Computação Móvel (68h)"
+        android:onClick="clickCalcular"/>
+
+    <CheckBox
+        android:id="@+id/checkAuto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Introdução a Automação (34h)"
+        android:onClick="clickCalcular"/>
+
+    <CheckBox
+        android:id="@+id/checkPSW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Projeto de software (68h)"
+        android:onClick="clickCalcular"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcular"
+        android:onClick="clickCalcular"/>
+
+    <TextView
+        android:id="@+id/textResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="resultado..."
+        android:textColor="#0000FF"
+        android:textSize="20sp"/>
+</LinearLayout>

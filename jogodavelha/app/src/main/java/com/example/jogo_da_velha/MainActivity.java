@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //hide name of app
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();//hide name of app
+        if(savedInstanceState != null){
+
+        }
 
         //choices game mode
         playerVsPlayer = findViewById(R.id.playerVsPlayer);
@@ -55,6 +57,42 @@ public class MainActivity extends AppCompatActivity {
         //start game with buttons not clickable
         changeStateButtons(false);
         restart.setClickable(false);
+
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Toast.makeText(this, "onStart executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Toast.makeText(this, "onResume executado: ", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Toast.makeText(this, "onPause executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Toast.makeText(this, "onStop executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Toast.makeText(this, "onRestart executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy executado: ", Toast.LENGTH_LONG).show();
     }
 
     int choiceGameMode;
@@ -121,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
     public void clickButton(View view) {
         switch(view.getId()) {
@@ -218,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
@@ -289,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
         button8.setText("");
         button9.setText("");
 
-        playerVsPlayer.setChecked(true);
+        playerVsPlayer.setChecked(false);
         playerVsPc.setChecked(false);
 
         playerVsPlayer.setEnabled(true);

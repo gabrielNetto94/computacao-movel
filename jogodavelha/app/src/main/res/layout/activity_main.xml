@@ -208,17 +208,6 @@
             android:text="Vez do jogador"
             android:textSize="20sp" />
 
-        <!--
-        <TextView
-            android:id="@+id/winStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:gravity="start"
-            android:text="Status Vitória"
-            android:textSize="20sp" />
-        -->
-
     </LinearLayout>
 
 
