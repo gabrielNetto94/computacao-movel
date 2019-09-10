@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">internacionalizacao</string>
+    <string name="header">Registro</string>
+    <string name="fullNname">Nombre Completo</string>
+    <string name="mail">Email</string>
+    <string name="userName">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="retypePassword">Vuelva a escribir su contraseña</string>
+    <string name="nationality">nacionalidad</string>
+    <string name="submit">Registrarse</string>
+</resources>

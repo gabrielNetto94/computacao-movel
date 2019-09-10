@@ -24,6 +24,8 @@ public class MainActivity<list> extends AppCompatActivity {
     //radio button game mode
     RadioButton playerVsPlayer, playerVsPc;
 
+    int controlPlayers = 0 ;//teste!!!
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class MainActivity<list> extends AppCompatActivity {
         //hide name of app
         getSupportActionBar().hide();
 
-        //choices game mode
+        //choose game mode
         playerVsPlayer = findViewById(R.id.playerVsPlayer);
         playerVsPc = findViewById(R.id.playerVsPc);
 
@@ -61,7 +63,9 @@ public class MainActivity<list> extends AppCompatActivity {
         if(savedInstanceState != null){
             Button getButton;
             usedButtons = savedInstanceState.getParcelableArrayList("usedButtons");
-
+            chooseGameMode = savedInstanceState.getInt("chooseGameMode");
+            controlPlayers = savedInstanceState.getInt("controlPlayers");
+            System.out.println("controlPlayers atrib -> "+controlPlayers);
             if(usedButtons != null){
                 for (int i = 0; i < usedButtons.size(); i++){
                     //get string
@@ -75,75 +79,38 @@ public class MainActivity<list> extends AppCompatActivity {
             }
         }
     }
-    //on pause - on stop - on destroy
-    //on create - on start - on resume
 
     ArrayList usedButtons = new ArrayList();
+    int chooseGameMode;
+    //int controlPlayers = 0 ;
+
+
 
     @Override
     public void onSaveInstanceState(Bundle stateToSave) {
-
-
         stateToSave.putParcelableArrayList("usedButtons",usedButtons);
+        stateToSave.putInt("chooseGameMode",chooseGameMode);
+        stateToSave.putInt("controlPlayer",controlPlayers);
         super.onSaveInstanceState(stateToSave);
-        //Toast.makeText(this, "onSaveInstanceState executado: ", Toast.LENGTH_LONG).show();
-    }
-/*
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Toast.makeText(this, "onStart executado: ", Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Toast.makeText(this, "onResume executado: ", Toast.LENGTH_LONG).show();
-    }
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Toast.makeText(this, "onPause executado: ", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        Toast.makeText(this, "onStop executado: ", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        Toast.makeText(this, "onRestart executado: ", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Toast.makeText(this, "onDestroy executado: ", Toast.LENGTH_LONG).show();
-    }*/
-
-    int choiceGameMode;
-    int controlPlayers = 0 ;
-
-    //choice game mode
+    //choose game mode
     public void onRadioButtonClicked(View view) {
+
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
             case R.id.playerVsPlayer:
                 if (checked)
-                    choiceGameMode = 1;
+                    chooseGameMode = 1;
                 break;
             case R.id.playerVsPc:
                 if (checked)
-                    choiceGameMode = 2;
+                    chooseGameMode = 2;
                 break;
         }
     }
 
     public void playerMove(Button btn, int indexButton){
-
 
         if(controlPlayers % 2 == 0){
             btn.setText("X");
@@ -151,7 +118,7 @@ public class MainActivity<list> extends AppCompatActivity {
             viewTurnPlayer.setText("Vez do jogador 2");
             usedButtons.add("X/"+indexButton);//after player execute the move
         }
-        if(controlPlayers % 2 == 1 && choiceGameMode == 1) {
+        if(controlPlayers % 2 == 1 && chooseGameMode == 1) {
             btn.setText("O");
             testWinner("O", 2);
             viewTurnPlayer.setText("Vez do jogador 1");
@@ -159,10 +126,9 @@ public class MainActivity<list> extends AppCompatActivity {
         }
         btn.setClickable(false);
         controlPlayers++;
-
     }
 
-    public void playComputer(){
+    public void playComputer(int indexButton){
 
         boolean flag = false;
         Random r = new Random();
@@ -189,6 +155,8 @@ public class MainActivity<list> extends AppCompatActivity {
                     controlPlayers++;
                     getButton.setClickable(false);
                     testWinner("O", 2);
+
+                    usedButtons.add("O/"+indexButton);//after player execute the move
                 }
 
             }
@@ -196,59 +164,60 @@ public class MainActivity<list> extends AppCompatActivity {
     }
 
     public void clickButton(View view) {
+        System.out.println("controlPlayers button -> "+controlPlayers+" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         switch(view.getId()) {
             case R.id.button1:
                 playerMove(button1,1);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(1);
                 }
                 break;
             case R.id.button2:
                 playerMove(button2,2);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(2);
                 }
                 break;
             case R.id.button3:
                 playerMove(button3,3);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(3);
                 }
                 break;
             case R.id.button4:
                 playerMove(button4,4);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(4);
                 }
                 break;
             case R.id.button5:
                 playerMove(button5,5);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(5);
                 }
                 break;
             case R.id.button6:
                 playerMove(button6,6);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(6);
                 }
                 break;
             case R.id.button7:
                 playerMove(button7,7);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(7);
                 }
                 break;
             case R.id.button8:
                 playerMove(button8,8);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(8);
                 }
                 break;
             case R.id.button9:
                 playerMove(button9,9);
-                if(choiceGameMode == 2){
-                    playComputer();
+                if(chooseGameMode == 2){
+                    playComputer(9);
                 }
                 break;
         }
@@ -354,7 +323,7 @@ public class MainActivity<list> extends AppCompatActivity {
 
         controlPlayers = 0;
 
-        choiceGameMode = 1;
+        chooseGameMode = 1;
     }
 
     public void startGame(View view){
@@ -368,10 +337,10 @@ public class MainActivity<list> extends AppCompatActivity {
             playerVsPc.setEnabled(false);
 
             changeStateButtons(true);
-            if(choiceGameMode == 1){
+            if(chooseGameMode == 1){
                 viewTurnPlayer.setText("Vez do jogador 1");
                 viewTurnPlayer.setVisibility(View.VISIBLE);
-            }else if (choiceGameMode == 2){
+            }else if (chooseGameMode == 2){
                 viewTurnPlayer.setText("");
                 viewTurnPlayer.setVisibility(View.INVISIBLE);
             }
