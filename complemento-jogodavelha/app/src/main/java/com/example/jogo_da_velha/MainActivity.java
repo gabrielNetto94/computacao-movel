@@ -8,9 +8,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<list> extends AppCompatActivity {
 
     //buttons jogo da velha
     Button button1,button2,button3,button4,button5,button6,button7,button8,button9;
@@ -55,7 +57,72 @@ public class MainActivity extends AppCompatActivity {
         //start game with buttons not clickable
         changeStateButtons(false);
         restart.setClickable(false);
+
+        if(savedInstanceState != null){
+            Button getButton;
+            usedButtons = savedInstanceState.getParcelableArrayList("usedButtons");
+
+            if(usedButtons != null){
+                for (int i = 0; i < usedButtons.size(); i++){
+                    //get string
+                    String stringToSplit = (String) usedButtons.get(i);
+                    String[] stringSplited = stringToSplit.split("/");
+
+                    int resId = getResources().getIdentifier("button" +Integer.parseInt(stringSplited[1]) , "id", getPackageName());
+                    getButton = (Button) findViewById(resId);
+                    getButton.setText( stringSplited[0]);
+                }
+            }
+        }
     }
+    //on pause - on stop - on destroy
+    //on create - on start - on resume
+
+    ArrayList usedButtons = new ArrayList();
+
+    @Override
+    public void onSaveInstanceState(Bundle stateToSave) {
+
+
+        stateToSave.putParcelableArrayList("usedButtons",usedButtons);
+        super.onSaveInstanceState(stateToSave);
+        //Toast.makeText(this, "onSaveInstanceState executado: ", Toast.LENGTH_LONG).show();
+    }
+/*
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Toast.makeText(this, "onStart executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Toast.makeText(this, "onResume executado: ", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Toast.makeText(this, "onPause executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Toast.makeText(this, "onStop executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Toast.makeText(this, "onRestart executado: ", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Toast.makeText(this, "onDestroy executado: ", Toast.LENGTH_LONG).show();
+    }*/
 
     int choiceGameMode;
     int controlPlayers = 0 ;
@@ -75,18 +142,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //set X or O
-    public void textButton(Button btn){
+    public void playerMove(Button btn, int indexButton){
+
+
         if(controlPlayers % 2 == 0){
             btn.setText("X");
             testWinner("X",1);
             viewTurnPlayer.setText("Vez do jogador 2");
+            usedButtons.add("X/"+indexButton);//after player execute the move
         }
         if(controlPlayers % 2 == 1 && choiceGameMode == 1) {
             btn.setText("O");
             testWinner("O", 2);
             viewTurnPlayer.setText("Vez do jogador 1");
+            usedButtons.add("O/"+indexButton);//after player execute the move
         }
+        btn.setClickable(false);
+        controlPlayers++;
+
     }
 
     public void playComputer(){
@@ -98,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
             changeStateButtons(false);
             restart.setClickable(true);
+            restart.setVisibility(View.VISIBLE);
         }else {
 
         while (!flag){
@@ -119,79 +193,60 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-
     }
 
     public void clickButton(View view) {
         switch(view.getId()) {
             case R.id.button1:
-                textButton(button1);
-                controlPlayers++;
-                button1.setClickable(false);
+                playerMove(button1,1);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button2:
-                textButton(button2);
-                controlPlayers++;
-                button2.setClickable(false);
+                playerMove(button2,2);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button3:
-                textButton(button3);
-                controlPlayers++;
-                button3.setClickable(false);
+                playerMove(button3,3);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button4:
-                textButton(button4);
-                controlPlayers++;
-                button4.setClickable(false);
+                playerMove(button4,4);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button5:
-                textButton(button5);
-                controlPlayers++;
-                button5.setClickable(false);
+                playerMove(button5,5);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button6:
-                textButton(button6);
-                controlPlayers++;
-                button6.setClickable(false);
+                playerMove(button6,6);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button7:
-                textButton(button7);
-                controlPlayers++;
-                button7.setClickable(false);
+                playerMove(button7,7);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button8:
-                textButton(button8);
-                controlPlayers++;
-                button8.setClickable(false);
+                playerMove(button8,8);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
                 break;
             case R.id.button9:
-                textButton(button9);
-                controlPlayers++;
-                button9.setClickable(false);
+                playerMove(button9,9);
                 if(choiceGameMode == 2){
                     playComputer();
                 }
