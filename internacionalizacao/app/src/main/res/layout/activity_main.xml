@@ -6,18 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#f6f6f6">
 
-    /*
-    Nome completo (TextView + EditText)
-    E-mail (TextView + EditText)
-    Login (TextView + EditText)
-    Senha (TextView + EditText com máscara para senhas)
-    Repita a senha (TextView + EditText com máscara para senhas)
-    Nacionalidade (TextView + Spinner)
-    Cadastrar (Botão)
-    */
+
     <TextView
+        android:textColor="@color/colorText"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,64 +19,82 @@
         android:textSize="27sp"/>
 
     <TextView
+        android:textColor="@color/colorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/fullNname"
+        android:text="@string/fullName"
         android:textSize="20sp"/>
+
+    <!--android:hint="Digite seu nome Completo"-->
     <EditText
-        android:hint="Digite seu nome Completo"
+        android:hint="@string/hintFullName"
+        android:textColorHint="@color/colorHint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="@color/colorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mail"
         android:textSize="20sp"/>
+
     <EditText
-        android:hint="Digite seu e-mail"
+        android:textColorHint="@color/colorHint"
+        android:hint="@string/hintEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="@color/colorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/userName"
         android:textSize="20sp"/>
+
     <EditText
-        android:hint="Digite seu Login"
+        android:textColorHint="@color/colorHint"
+        android:hint="@string/hintUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="@color/colorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:textSize="20sp"/>
+
     <EditText
+        android:textColorHint="@color/colorHint"
         android:inputType="textPassword"
-        android:hint="Digite sua senha"
+        android:hint="@string/hintPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="@color/colorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/retypePassword"
         android:textSize="20sp"/>
+
     <EditText
+        android:textColorHint="@color/colorHint"
         android:inputType="textPassword"
-        android:hint="Digite novamente sua senha"
+        android:hint="@string/hintRetypePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:textColor="@color/colorText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nationality"
         android:textSize="20sp"/>
 
     <Spinner
+        android:id="@+id/spinnerNationality"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

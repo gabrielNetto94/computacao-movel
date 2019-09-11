@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">internacionalizacao</string>
     <string name="header">Form</string>
-    <string name="fullNname">Full Name</string>
+
+    <string name="fullName">Full Name</string>
     <string name="mail">Email</string>
     <string name="userName">User</string>
     <string name="password">Password</string>
     <string name="retypePassword">Retype your Password</string>
     <string name="nationality">Natinality</string>
     <string name="submit">Submit</string>
+    <string name="hintFullName">Enter your full name</string>
+    <string name="hintEmail">Enter your email</string>
+    <string name="hintUser">Enter your username</string>
+    <string name="hintPassword">Enter your password</string>
+    <string name="hintRetypePassword">Retype your password</string>
+
+
 </resources>

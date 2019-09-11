@@ -1,0 +1,9 @@
+<resources>
+
+    <string-array name="nationality">
+        <item>Brasileño</item>
+        <item>Americano</item>
+        <item>Espanol</item>
+    </string-array>
+
+</resources>

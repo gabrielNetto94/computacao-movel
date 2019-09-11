@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">internacionalizacao</string>
     <string name="header">Registro</string>
-    <string name="fullNname">Nombre Completo</string>
+    <string name="fullName">Nombre Completo</string>
     <string name="mail">Email</string>
     <string name="userName">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="retypePassword">Vuelva a escribir su contraseña</string>
     <string name="nationality">nacionalidad</string>
     <string name="submit">Registrarse</string>
+
+    <string name="hintFullName">Ingrese su nombre completo</string>
+    <string name="hintEmail">Introduce tu correo electrónico</string>
+    <string name="hintUser">Ingrese su nombre de usuario</string>
+    <string name="hintPassword">Enter your password</string>
+    <string name="hintRetypePassword">Reescribe tu contraseña</string>
 </resources>
