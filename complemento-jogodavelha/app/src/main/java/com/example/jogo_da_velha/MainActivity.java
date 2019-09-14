@@ -7,8 +7,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,8 +21,6 @@ public class MainActivity<list> extends AppCompatActivity {
 
     //radio button game mode
     RadioButton playerVsPlayer, playerVsPc;
-
-    int controlPlayers = 0 ;//teste!!!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +57,31 @@ public class MainActivity<list> extends AppCompatActivity {
         restart.setClickable(false);
 
         if(savedInstanceState != null){
+            //check state radio button
+
             Button getButton;
             usedButtons = savedInstanceState.getParcelableArrayList("usedButtons");
             chooseGameMode = savedInstanceState.getInt("chooseGameMode");
             controlPlayers = savedInstanceState.getInt("controlPlayers");
-            System.out.println("controlPlayers atrib -> "+controlPlayers);
+
+            if(controlPlayers != 0){
+                //startGame.setClickable(false);
+            }
+            if(chooseGameMode == 0){//none radio button selected
+                playerVsPc.setChecked(false);
+                playerVsPlayer.setChecked(false);
+            }if(chooseGameMode == 1){//player X Player selected
+                playerVsPlayer.setChecked(true);
+                playerVsPc.setChecked(false);
+                playerVsPlayer.setEnabled(false);
+                playerVsPc.setEnabled(false);
+            }if(chooseGameMode == 2 ){//palyer X pc selected
+                playerVsPlayer.setChecked(true);
+                playerVsPc.setChecked(true);
+                playerVsPlayer.setEnabled(false);
+                playerVsPc.setEnabled(false);
+            }
+
             if(usedButtons != null){
                 for (int i = 0; i < usedButtons.size(); i++){
                     //get string
@@ -81,16 +97,14 @@ public class MainActivity<list> extends AppCompatActivity {
     }
 
     ArrayList usedButtons = new ArrayList();
-    int chooseGameMode;
-    //int controlPlayers = 0 ;
-
-
+    int chooseGameMode = 0;
+    int controlPlayers = 0;
 
     @Override
     public void onSaveInstanceState(Bundle stateToSave) {
         stateToSave.putParcelableArrayList("usedButtons",usedButtons);
         stateToSave.putInt("chooseGameMode",chooseGameMode);
-        stateToSave.putInt("controlPlayer",controlPlayers);
+        stateToSave.putInt("controlPlayers",controlPlayers);
         super.onSaveInstanceState(stateToSave);
     }
 
@@ -128,22 +142,19 @@ public class MainActivity<list> extends AppCompatActivity {
         controlPlayers++;
     }
 
-    public void playComputer(int indexButton){
+    public void playComputer(){
 
         boolean flag = false;
         Random r = new Random();
         Button getButton;
         if(controlPlayers >= 9){
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }else {
 
         while (!flag){
 
             int numberButton = r.nextInt(9)+1;
-            System.out.println(numberButton);
             int resId = getResources().getIdentifier("button" + numberButton, "id", getPackageName());
             getButton = (Button) findViewById(resId);
 
@@ -155,8 +166,7 @@ public class MainActivity<list> extends AppCompatActivity {
                     controlPlayers++;
                     getButton.setClickable(false);
                     testWinner("O", 2);
-
-                    usedButtons.add("O/"+indexButton);//after player execute the move
+                    usedButtons.add("O/"+numberButton);//after player execute the move
                 }
 
             }
@@ -164,60 +174,59 @@ public class MainActivity<list> extends AppCompatActivity {
     }
 
     public void clickButton(View view) {
-        System.out.println("controlPlayers button -> "+controlPlayers+" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         switch(view.getId()) {
             case R.id.button1:
                 playerMove(button1,1);
                 if(chooseGameMode == 2){
-                    playComputer(1);
+                    playComputer();
                 }
                 break;
             case R.id.button2:
                 playerMove(button2,2);
                 if(chooseGameMode == 2){
-                    playComputer(2);
+                    playComputer();
                 }
                 break;
             case R.id.button3:
                 playerMove(button3,3);
                 if(chooseGameMode == 2){
-                    playComputer(3);
+                    playComputer();
                 }
                 break;
             case R.id.button4:
                 playerMove(button4,4);
                 if(chooseGameMode == 2){
-                    playComputer(4);
+                    playComputer();
                 }
                 break;
             case R.id.button5:
                 playerMove(button5,5);
                 if(chooseGameMode == 2){
-                    playComputer(5);
+                    playComputer();
                 }
                 break;
             case R.id.button6:
                 playerMove(button6,6);
                 if(chooseGameMode == 2){
-                    playComputer(6);
+                    playComputer();
                 }
                 break;
             case R.id.button7:
                 playerMove(button7,7);
                 if(chooseGameMode == 2){
-                    playComputer(7);
+                    playComputer();
                 }
                 break;
             case R.id.button8:
                 playerMove(button8,8);
                 if(chooseGameMode == 2){
-                    playComputer(8);
+                    playComputer();
                 }
                 break;
             case R.id.button9:
                 playerMove(button9,9);
                 if(chooseGameMode == 2){
-                    playComputer(9);
+                    playComputer();
                 }
                 break;
         }
@@ -233,63 +242,64 @@ public class MainActivity<list> extends AppCompatActivity {
         button7.setClickable(state);
         button8.setClickable(state);
         button9.setClickable(state);
+
+    }
+
+    public void clearGame(){
+        changeStateButtons(false);
+        restart.setClickable(true);
+        restart.setVisibility(View.VISIBLE);
+        usedButtons.clear();
+        System.out.println("array usedbuttons "+usedButtons);
     }
 
     public void testWinner (String player, int numberPLayer){
 
+        System.out.println("1"+button1.getText());
+        System.out.println("2"+button2.getText());
+        System.out.println("3"+button3.getText());
+        System.out.println("4"+button4.getText());
+        System.out.println("5"+button5.getText());
+        System.out.println("6"+button6.getText());
+        System.out.println("7"+button7.getText());
+        System.out.println("8"+button8.getText());
+        System.out.println("9"+button9.getText());
+
         if(controlPlayers >= 9){
             Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button4.getText() == player && button5.getText() == player && button6.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button7.getText() == player && button8.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button1.getText() == player && button5.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button3.getText() == player && button5.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button1.getText() == player && button4.getText() == player && button7.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button2.getText() == player && button5.getText() == player && button8.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
         if(button3.getText() == player && button6.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
-            changeStateButtons(false);
-            restart.setClickable(true);
-            restart.setVisibility(View.VISIBLE);
+            clearGame();
         }
 
     }
@@ -322,8 +332,7 @@ public class MainActivity<list> extends AppCompatActivity {
         viewTurnPlayer.setText("Vez do jogador 1");
 
         controlPlayers = 0;
-
-        chooseGameMode = 1;
+        chooseGameMode = 0;
     }
 
     public void startGame(View view){
