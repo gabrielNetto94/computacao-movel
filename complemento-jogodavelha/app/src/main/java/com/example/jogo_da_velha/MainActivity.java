@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -56,6 +58,7 @@ public class MainActivity<list> extends AppCompatActivity {
         changeStateButtons(false);
         restart.setClickable(false);
 
+
         if(savedInstanceState != null){
             //check state radio button
 
@@ -93,6 +96,7 @@ public class MainActivity<list> extends AppCompatActivity {
                     getButton.setText( stringSplited[0]);
                 }
             }
+            startGame.performClick();
         }
     }
 
@@ -250,26 +254,20 @@ public class MainActivity<list> extends AppCompatActivity {
         restart.setClickable(true);
         restart.setVisibility(View.VISIBLE);
         usedButtons.clear();
-        System.out.println("array usedbuttons "+usedButtons);
+        //System.out.println("array usedbuttons "+usedButtons);
     }
 
     public void testWinner (String player, int numberPLayer){
 
-        System.out.println("1"+button1.getText());
-        System.out.println("2"+button2.getText());
-        System.out.println("3"+button3.getText());
-        System.out.println("4"+button4.getText());
-        System.out.println("5"+button5.getText());
-        System.out.println("6"+button6.getText());
-        System.out.println("7"+button7.getText());
-        System.out.println("8"+button8.getText());
-        System.out.println("9"+button9.getText());
 
-        if(controlPlayers >= 9){
-            Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
-            clearGame();
-        }
+        System.out.println("player -> "+player+" numberPlayer -> "+numberPLayer);
+        System.out.println(button1.getText()+"  "+button2.getText()+"   "+button3.getText());
+        System.out.println(button4.getText()+"  "+button5.getText()+"   "+button6.getText());
+        System.out.println(button7.getText()+"  "+button8.getText()+"   "+button9.getText());
+
+
         if(button1.getText() == player && button2.getText() == player && button3.getText() == player){
+            System.out.println("win!!!");
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
             clearGame();
         }
@@ -299,6 +297,10 @@ public class MainActivity<list> extends AppCompatActivity {
         }
         if(button3.getText() == player && button6.getText() == player && button9.getText() == player){
             Toast.makeText(getApplicationContext(), "Jogador "+numberPLayer+" VENCEU!", Toast.LENGTH_SHORT).show();
+            clearGame();
+        }
+        if(controlPlayers >= 9){
+            Toast.makeText(getApplicationContext(), "EMPATE!", Toast.LENGTH_SHORT).show();
             clearGame();
         }
 
