@@ -2,6 +2,9 @@
     <string name="app_name">internacionalizacao</string>
     <string name="header">Registro</string>
     <string name="fullName">Nombre Completo</string>
+    <string name="gender">Sexo</string>
+    <string name="male">Masculino</string>
+    <string name="female">Femenino</string>
     <string name="mail">Email</string>
     <string name="userName">Usuario</string>
     <string name="password">Contraseña</string>

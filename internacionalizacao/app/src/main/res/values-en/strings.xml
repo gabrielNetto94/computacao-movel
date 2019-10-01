@@ -2,6 +2,9 @@
     <string name="app_name">internacionalizacao</string>
     <string name="header">Form</string>
     <string name="fullName">Full Name</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Feminine</string>
     <string name="mail">Email</string>
     <string name="userName">User</string>
     <string name="password">Password</string>
