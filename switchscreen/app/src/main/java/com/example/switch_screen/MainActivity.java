@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
         //button
         login = findViewById(R.id.idLogin);
@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
     public void login() {
         Intent intent = new Intent(this, Test.class);
 
@@ -63,10 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Toast.makeText(this, gender.getText(), Toast.LENGTH_SHORT).show();
 
+        intent.putExtra("maritalStatus",spinnerMaritalStatus.getSelectedItem().toString());
+        intent.putExtra("typeDrink",spinnerTypeDrink.getSelectedItem().toString());
         intent.putExtra("gender",gender.getText());
         intent.putExtra("name",name.getText().toString());
 
-        //startActivity(intent);
+        startActivity(intent);
     }
 
 }
