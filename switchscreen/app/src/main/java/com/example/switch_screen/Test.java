@@ -1,22 +1,19 @@
 package com.example.switch_screen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Test extends AppCompatActivity {
 
-    TextView TVname, TVgender, TVmaritalStatus, TVtypeDrink;
+    TextView Vname, Vgender, VmaritalStatus, VtypeDrink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
-
 
         getSupportActionBar().hide();
 
@@ -27,19 +24,15 @@ public class Test extends AppCompatActivity {
         String maritalStatus = it.getStringExtra("maritalStatus");
         String typeDrink= it.getStringExtra("typeDrink");
 
-        TVname = findViewById(R.id.viewName);
-        TVgender = findViewById(R.id.viewGender);
-        TVmaritalStatus = findViewById(R.id.viewMaritalSatus);
-        TVtypeDrink = findViewById(R.id.viewTypeDrink);
+        Vname = findViewById(R.id.viewName);
+        Vgender = findViewById(R.id.viewGender);
+        VmaritalStatus = findViewById(R.id.viewMaritalSatus);
+        VtypeDrink = findViewById(R.id.viewTypeDrink);
 
-        TVname.setText("Nome: "+name);
-        TVgender.setText("Gênero "+gender);
-        TVmaritalStatus.setText("Status relacionamento: "+maritalStatus);
-        TVtypeDrink.setText("Bebida favorita: "+typeDrink);
+        Vname.setText("Nome: "+name);
+        Vgender.setText("Gênero: "+gender);
+        VmaritalStatus.setText("Status relacionamento: "+maritalStatus);
+        VtypeDrink.setText("Bebida favorita: "+typeDrink);
 
     }
-
-
-
-
 }

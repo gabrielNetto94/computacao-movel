@@ -1,7 +1,5 @@
 package com.example.switch_screen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,31 +34,24 @@ public class MainActivity extends AppCompatActivity {
         spinnerMaritalStatus = findViewById(R.id.spinnerMaritalStatus);
         spinnerTypeDrink = findViewById(R.id.spinnerTypeDrink);
 
+        //fill spinner
         ArrayAdapter<String> adapterMaritalStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
         adapterMaritalStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMaritalStatus.setAdapter(adapterMaritalStatus);
 
+        //fill spinner
         ArrayAdapter<String> adapterTypeDrink = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeDrink);
         adapterTypeDrink.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTypeDrink.setAdapter(adapterTypeDrink);
 
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
     }
 
-    public void login() {
+    public void login(View v) {
         Intent intent = new Intent(this, Test.class);
 
         RadioGroup RadioGender = findViewById(R.id.gender);
         RadioButton gender =  findViewById(RadioGender.getCheckedRadioButtonId());
         EditText name  = findViewById(R.id.inputName);
-
-        //Toast.makeText(this, gender.getText(), Toast.LENGTH_SHORT).show();
 
         intent.putExtra("maritalStatus",spinnerMaritalStatus.getSelectedItem().toString());
         intent.putExtra("typeDrink",spinnerTypeDrink.getSelectedItem().toString());
