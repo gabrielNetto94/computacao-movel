@@ -2,6 +2,7 @@ package com.example.switch_screen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -9,23 +10,37 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     String[] status = new String[] {"Solteiro(a)","Casado(a)","Separado(a)","Viúvo(a)"};
-    String[] typeDrink = new String[] {"Vinho","Cerveja","Refrigerante"};
+    String[] typeDrink = new String[] {"Cerveja","Refrigerante","Vinho"};
 
     Spinner spinnerMaritalStatus, spinnerTypeDrink;
     Button login;
+    RadioButton female;
+    RadioButton male;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         getSupportActionBar().hide();
+
+        Intent it = getIntent();
+
+        int valueMessage = it.getIntExtra("message",9);
+
+        if(valueMessage == 1){
+            Toast.makeText(this, valueMessage, Toast.LENGTH_SHORT).show();
+        }
+
+        //radioButtons
+        female = findViewById(R.id.female);
+        male = findViewById(R.id.male);
 
         //button
         login = findViewById(R.id.idLogin);
@@ -48,14 +63,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View v) {
         Intent intent = new Intent(this, Test.class);
-
-        RadioGroup RadioGender = findViewById(R.id.gender);
-        RadioButton gender =  findViewById(RadioGender.getCheckedRadioButtonId());
         EditText name  = findViewById(R.id.inputName);
+
+        String genderStr = null;
+
+        if(!female.isChecked() && !male.isChecked()){
+            genderStr = "null";
+        }
+        else{
+            if(female.isChecked()){
+                genderStr = (String) female.getText();
+            }else{
+                genderStr = (String) male.getText();
+            }
+        }
 
         intent.putExtra("maritalStatus",spinnerMaritalStatus.getSelectedItem().toString());
         intent.putExtra("typeDrink",spinnerTypeDrink.getSelectedItem().toString());
-        intent.putExtra("gender",gender.getText());
+        intent.putExtra("gender",genderStr);
         intent.putExtra("name",name.getText().toString());
 
         startActivity(intent);
