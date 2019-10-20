@@ -42,9 +42,24 @@
             android:textSize="20sp">
         </TextView>
 
+        <TextView
+            android:id="@+id/viewPhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/viewImage"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp">
+
+        </ImageView>
         <Button
             android:text="Voltar"
-            android:layout_marginTop="150sp"
+
             android:layout_marginLeft="100sp"
             android:layout_marginRight="100sp"
             android:onClick="sendHomeScreen"

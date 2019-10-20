@@ -67,23 +67,23 @@ public class MainActivity extends AppCompatActivity {
 
         String genderStr = null;
 
-        if(!female.isChecked() && !male.isChecked()){
-            genderStr = "null";
+        if(female.isChecked()){
+            genderStr = (String) female.getText();
         }
-        else{
-            if(female.isChecked()){
-                genderStr = (String) female.getText();
-            }else{
-                genderStr = (String) male.getText();
-            }
+        if(male.isChecked()){
+            genderStr = (String) male.getText();
         }
 
-        intent.putExtra("maritalStatus",spinnerMaritalStatus.getSelectedItem().toString());
-        intent.putExtra("typeDrink",spinnerTypeDrink.getSelectedItem().toString());
-        intent.putExtra("gender",genderStr);
-        intent.putExtra("name",name.getText().toString());
+        if(genderStr != null && name.getText().length() != 0){
+            intent.putExtra("maritalStatus",spinnerMaritalStatus.getSelectedItem().toString());
+            intent.putExtra("typeDrink",spinnerTypeDrink.getSelectedItem().toString());
+            intent.putExtra("gender",genderStr);
+            intent.putExtra("name",name.getText().toString());
+            startActivity(intent);
+        }else {
+            Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+        }
 
-        startActivity(intent);
     }
 
 }
