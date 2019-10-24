@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewInsertCar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome do veículo"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+
+        <EditText
+            android:id="@+id/nameCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o nome do veículo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Placa do veículo"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+
+        <EditText
+            android:id="@+id/boardCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite a placa do veículo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ano do veículo"
+            android:textSize="20dp"
+            android:textColor="#000"/>
+
+        <EditText
+            android:id="@+id/yearCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o ano do veículo"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnInserirComSQL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="insertCar"
+        android:text="Cadastrar"/>
+
+    <Button
+        android:id="@+id/btnAlterarComSQL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="alterarComSQLClick"
+        android:text="Alterar com SQL" />
+
+    <Button
+        android:id="@+id/btnExcluirComSQL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="excluirComSQLClick"
+        android:text="Excluir com SQL" />
+
+    <Button
+        android:id="@+id/btnBuscarComSQL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="buscarComSQLClick"
+        android:text="Buscar com SQL" />
+
+    <Button
+        android:onClick="requestGET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET"/>
+
+    <TextView
+        android:id="@+id/editTextComSQL"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:ems="10"
+        android:textSize="20dp"
+        android:gravity="top|left"
+        android:inputType="textMultiLine" />
+    </LinearLayout>
+
+</LinearLayout>
